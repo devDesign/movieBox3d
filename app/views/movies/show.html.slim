@@ -1,0 +1,42 @@
+= link_to "Back to all movies", movies_path 
+
+= link_to image_tag(@movie.poster_image_url), movie_path(@movie)
+h2
+  = @movie.title
+  |( 
+  = link_to "edit", edit_movie_path(@movie)
+  | 
+    |)
+  = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
+h3
+  = @movie.release_date
+h4
+  | Dir. 
+  = @movie.director
+  || 
+  = @movie.runtime_in_minutes
+  | minutes
+p
+  = @movie.description
+hr
+  h3
+    |Reviews of
+    em
+      =@movie.title
+  -if current_user
+    -@movie.reviews.each do |review|
+      p
+        = review.text
+      p
+        = review.rating_out_of_ten
+        | /10
+      small
+        | -
+        = review.user.full_name
+      br
+    = link_to "Write a review!", new_movie_review_path(@movie)
+  -else
+    p
+      | please
+      =link_to "log in", new_session_path
+      | to see revies and add your own
