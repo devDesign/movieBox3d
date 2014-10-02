@@ -20,12 +20,37 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
-    def review_average
+  def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size
   end
+=begin
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+=end
+scope :search, -> (name) { where("title like ?", "%#{name}%")}
+scope :search_director, -> (name) { where("director like ?", "%#{name}%")}
+scope :search_runtime, -> (name) { 
+  case name 
+  when "Under 90 minutes"
+    where("runtime_in_minutes < ?", 90)
+  when "Between 90 and 120 minutes"
+    where("runtime_in_minutes > ?", 90)
+    where("runtime_in_minutes < ?", 120)
+  when "Over 120 minutes"
+    where("runtime_in_minutes > ?", 120)
+  end
+  }
+
 
 
   protected
+
+
 
 
   def release_date_is_in_the_future

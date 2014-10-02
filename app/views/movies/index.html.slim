@@ -1,6 +1,15 @@
 h1 Rotten Mangoes
 = link_to "submit a movie!", new_movie_path
 br
+= form_tag("/", method: "get") do 
+  = label_tag(:search, "Search by title:") 
+  = text_field_tag(:search) 
+  = label_tag(:search_director, "Search by director:") 
+  = text_field_tag(:search_director) 
+  = label_tag(:search_runtime, "Search by runtime")
+  = select_tag(:search_runtime,options_for_select([ "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes" ]),prompt: "Select something")
+  = submit_tag "Search", :name => nil 
+br
 - @movies.each do |movie|
   = image_tag movie.image_url(:thumb) if movie.image
   = link_to image_tag(movie.poster_image_url), movie_path(movie)
