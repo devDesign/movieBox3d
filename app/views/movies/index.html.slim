@@ -10,20 +10,4 @@ br
   = select_tag(:search_runtime,options_for_select([ "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes" ]),prompt: "Select something")
   = submit_tag "Search", :name => nil 
 br
-- @movies.each do |movie|
-  = image_tag movie.image_url(:thumb) if movie.image
-  = link_to image_tag(movie.poster_image_url), movie_path(movie)
-  h2 
-    = link_to movie.title, movie_path(movie)
-  h3
-    = movie.release_date
-  h4 
-    | director: 
-    = movie.director
-    br
-    |runtime: 
-    = movie.runtime_in_minutes
-    | minutes
-  p 
-     =movie.description
-
+= render 'movies'
