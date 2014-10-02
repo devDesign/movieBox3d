@@ -32,8 +32,7 @@ class Movie < ActiveRecord::Base
     end
   end
 =end
-scope :search, -> (name) { where("title like ?", "%#{name}%")}
-scope :search_director, -> (name) { where("director like ?", "%#{name}%")}
+scope :search, -> (name) { where("title like ? OR director like ?", "%#{name}%","%#{name}%")}
 scope :search_runtime, -> (name) { 
   case name 
   when "Under 90 minutes"

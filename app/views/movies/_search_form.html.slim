@@ -1,0 +1,7 @@
+= form_tag("/", method: "get") do 
+  = label_tag(:search, "Search by title or director:") 
+  = text_field_tag(:search) 
+  br
+  = label_tag(:search_runtime, "Search by runtime")
+  = select_tag(:search_runtime,options_for_select([ "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes" ]),prompt: "Select something")
+  = submit_tag "Search", :name => nil
