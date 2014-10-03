@@ -1,10 +1,12 @@
 footer
   small
-    - if current_user && current_user.admin == 1
+    - if current_user && current_user.admin == true
       br
       |ADMINISTATOR
       br
       = link_to "user administration", admin_users_index_path
+      br
+      = link_to "admin create user", new_admin_user_path
       br
     - if current_user
       |Signed in as 

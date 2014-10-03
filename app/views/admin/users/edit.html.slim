@@ -1,0 +1,32 @@
+= form_for @user do |f| 
+  - if @user.errors.any? 
+    div
+      = pluralize(@user.errors.count, "error")
+      | prevented the account from being created:
+      ul
+        - @user.errors.full_messages.each do |msg| 
+          li
+          = msg 
+  div
+    = f.label "email" 
+    = f.text_field "email" 
+  div
+    = f.label "firstname", "First Name"
+    br
+    = f.text_field "firstname"
+  div
+    = f.label "lastname", "Last Name"
+    = f.text_field "lastname"
+  div
+    = f.label "password" 
+    = f.password_field "password" 
+  div
+    = f.label "password_confirmation"
+    br
+    = f.password_field "password_confirmation"
+  div
+    = f.label "admin?"
+    br
+    = f.check_box 'admin',{checked: false}
+  div
+    = f.submit "Submit"
