@@ -12,6 +12,7 @@ RottenMangos::Application.routes.draw do
 
 resources :movies do
     resources :reviews, only: [:new, :create]
+    resources :actors
   end
   resource :seed_aliens, only: [:create]
   resources :users

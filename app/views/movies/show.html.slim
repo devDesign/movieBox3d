@@ -19,6 +19,17 @@ h4
   | minutes
 p
   = @movie.description
+br
+table
+  - @actors.each_with_index do |actor,index|
+    - if index < 20
+      tr
+        td
+           = actor.full_name 
+        td
+          = actor.role
+    
+      
 hr
   h3
     |Reviews of
