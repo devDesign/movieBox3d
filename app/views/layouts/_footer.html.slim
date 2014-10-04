@@ -8,6 +8,8 @@ footer
       br
       = link_to "admin create user", new_admin_user_path
       br
+      = link_to "seed aliens", seed_aliens_path, method: :create
+      br
     - if current_user
       |Signed in as 
       = current_user.full_name

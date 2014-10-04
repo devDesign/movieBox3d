@@ -1,0 +1,2 @@
+module SeedAliensHelper
+end

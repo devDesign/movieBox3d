@@ -1,20 +1,19 @@
 RottenMangos::Application.routes.draw do
+  get 'seed_aliens/create'
+
   namespace :admin do
-  get 'users/index'
-  resource :user
+    get 'users/index'
+    resources :users do
+      member do
+        put :switch
+      end
+    end
   end
-
-  get 'posters/new'
-
-  get 'posters/create'
-
-  get 'reviews/new'
-
-  get 'reviews/create'
 
 resources :movies do
     resources :reviews, only: [:new, :create]
   end
+  resource :seed_aliens, only: [:create]
   resources :users
   resource :session, only: [:new, :create, :destroy]
   root to: 'movies#index'
