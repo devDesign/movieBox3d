@@ -1,11 +1,13 @@
-- @movies.reverse.each do |movie|
-  = image_tag movie.image_url(:thumb) if movie.image
-  = link_to image_tag(movie.poster_image_url), movie_path(movie)
-  h2 
-    = link_to movie.title, movie_path(movie)
-
-    br
-    br
-    small
-      = movie.tag_line
-    br
+div id="contentFlow" class="ContentFlow"
+  .loadIndicator
+    .indicator
+  .flow
+    - @movies.reverse.each do |movie|
+      .item
+        img src="#{movie.poster_image_url}" class="content" href="/movies/#{movie.id}" 
+        .caption
+          =movie.title 
+  .globalCaption
+javascript:
+ var myNewFlow = new ContentFlow('contentFlow', { reflectionHeight: 0.3, circularFlow: true, maxItemHeight: 450, startItem: 0 } ) ;
+ 

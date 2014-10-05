@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::BaseController
+  
   def index
     if current_user && current_user.admin == true
       @users=User.all

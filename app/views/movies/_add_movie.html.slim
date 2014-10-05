@@ -1,4 +1,5 @@
-= form_tag(seed_aliens_path, method: :create) do 
-  = label_tag(:add_movie, "Add movie:") 
-  = text_field_tag(:add_movie) 
-  = submit_tag "ADD"
+.addmovie
+  = form_tag(seed_aliens_path, method: :create) do 
+    = label_tag(:add_movie, "Add movie:") 
+    = text_field_tag(:add_movie) 
+    = submit_tag "ADD"

@@ -22,12 +22,15 @@ p
 br
 table
   - @actors.each_with_index do |actor,index|
-    - if index < 20
+    - if index < 10
       tr
         td
            = actor.full_name 
         td
           = actor.role
+        td
+          img src="#{actor.picture}"
+
     
       
 hr
