@@ -11,12 +11,43 @@ body{
   }
 }
 .actors{
-  width: 45%;
+  width: 595px;
   float: left;
+}
+.actor_name{
+  margin-top: -40px;
+  z-index: 9999;
+  width: 140px;
+  color:#e2e2e2;
+  border-radius: 40px;
+  padding-left: 10px;
+  position: absolute;
+  font-family: helvetica;
+  background-color: rgba(0,0,0,0.9);
+  background-position: 10px 10px;
+  font-size: 0.9em;
+   
+}
+.iframe_hider{
+  iframe{
+    display: none;
+  }
+}
+
+.trailer{
+  background-size: 100% 100%;
+  width: 570px;
+  margin-left: 0px;
+  height: 322px;
+  float: left;
+  text-align: center;
+  background-color: rgba(22,22,22,1);
+  padding-top:15px;
+  z-index: 99999;
 }
 .actor{
   float: left;
-  height: 350px;
+  height: 278px;
 }
 .addmovie{
   color:#dddddd;

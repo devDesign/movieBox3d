@@ -10,7 +10,7 @@ class SeedAliensController < ApplicationController
     @alien['results'].each_with_index do |movie,index|
      
       if movie['poster_path'] != nil && index < 1
-      movie_info_target_api = "http://api.themoviedb.org/3/movie/#{movie['id']}?api_key=e753e57cc01e48ed3a8d4276010c8092"
+      movie_info_target_api = "http://api.themoviedb.org/3/movie/#{movie['id']}?api_key=e753e57cc01e48ed3a8d4276010c8092&append_to_response=trailers"
       movie_cast_target_api = "http://api.themoviedb.org/3/movie/#{movie['id']}/credits?api_key=e753e57cc01e48ed3a8d4276010c8092"
 
       movie_info = Nokogiri::HTML(open(movie_info_target_api))
@@ -18,11 +18,12 @@ class SeedAliensController < ApplicationController
       movie_cast = Nokogiri::HTML(open(movie_cast_target_api))
       @movie_cast_hash = JSON.parse(movie_cast)
       @movie = Movie.new
-      @movie
+      @movie.trailer = movie_info_hash['trailers']['youtube'][0]['source']
       @movie.title = movie['title']
- 
+      
 
       @movie.poster_image_url = "http://image.tmdb.org/t/p/w300#{movie['poster_path']}"
+      @movie.backdrop_image_url = "http://image.tmdb.org/t/p/w500#{movie_info_hash['backdrop_path']}"
       @movie.runtime_in_minutes = movie_info_hash['runtime']
       @movie.description = movie_info_hash['overview']
       @movie.release_date = movie_info_hash['release_date']

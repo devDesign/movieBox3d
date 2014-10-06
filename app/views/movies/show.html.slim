@@ -6,30 +6,24 @@
     h1
       = @movie.title
   
-.movie
+.movie 
   .actors
     - @actors.each_with_index do |actor,index|
       - if index < 11 && actor.picture != nil
+        -if index == 3
+          .trailer style="background-image: url(#{@movie.backdrop_image_url};)"
+            .iframe_hider
+              iframe id="ytplayer" type="text/html" width="555" height="312" src="http://www.youtube.com/embed/#{@movie.trailer}?autoplay=0" frameborder="0"
         .actor
           table
             tr
               td
-                img src="#{actor.picture}" 
-            tr
-              td
-                =actor.full_name
-                br
-                =actor.role 
-  = link_to "Back to all movies", movies_path 
-  br
-
-
-  small
-    |( 
-    = link_to "edit", edit_movie_path(@movie)
-    |  | 
-    = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
-    |)
+                img src="#{actor.picture}" height='278px' width='185'
+                .actor_name
+                  =actor.full_name
+                  br
+                  | ~ 
+                  = actor.role 
   h3
     = @movie.release_date
   h4
@@ -41,6 +35,7 @@
   p
     = @movie.description
   br
+
 
 
  
@@ -68,6 +63,19 @@
         | please 
         = link_to "log in", new_session_path
         |  to see revies and add your own 
+    = link_to "Back to all movies", movies_path 
+  br
+
+
+  small
+    |( 
+    = link_to "edit", edit_movie_path(@movie)
+    |  | 
+    = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
+    |)
+.footer_space
+  
+
 
 
 script src="/javascript/three.min.js"
