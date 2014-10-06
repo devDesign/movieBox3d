@@ -22,6 +22,7 @@ validates :title,
     end
   end
 =end
+scope :search_genre, -> (name) {where("Genre.sci_fi like ?","%#{name}%")}
 scope :search, -> (name) { where("title like ? OR director like ?", "%#{name}%","%#{name}%")}
 scope :search_runtime, -> (name) { 
   case name 
@@ -34,6 +35,10 @@ scope :search_runtime, -> (name) {
     where("runtime_in_minutes > ?", 120)
   end
   }
+
+  def find_genres
+    Genre.where(movie_id: self.id)
+  end
 
 
 

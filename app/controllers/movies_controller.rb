@@ -4,7 +4,6 @@ class MoviesController < ApplicationController
     @genre = Genre.all
     @movies = Movie.all
     @movies = Movie.search(params[:search]) unless params[:search].blank?
-    @movies = Movie.search_director(params[:search_director]) unless params[:search_director].blank?
     @movies = Movie.search_runtime(params[:search_runtime]) unless params[:search_runtime].blank?
   end
 

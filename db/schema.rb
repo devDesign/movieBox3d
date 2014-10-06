@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005023704) do
+ActiveRecord::Schema.define(version: 20141005215216) do
 
   create_table "actors", force: true do |t|
     t.datetime "created_at"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20141005023704) do
     t.datetime "updated_at"
     t.integer  "movies_id"
     t.string   "genre"
+    t.integer  "movie_id"
   end
 
+  add_index "genres", ["movie_id"], name: "index_genres_on_movie_id"
   add_index "genres", ["movies_id"], name: "index_genres_on_movies_id"
 
   create_table "genres_tables", force: true do |t|

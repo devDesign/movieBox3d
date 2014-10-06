@@ -33,7 +33,7 @@ class SeedAliensController < ApplicationController
       
       movie_info_hash['genres'].each_with_index do |genre|
         @genre = Genre.new
-        @genre.movies_id = @movie.id
+        @genre.movie_id = @movie.id
         @genre.genre = genre['name']
         @genre.save
       end

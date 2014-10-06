@@ -2,12 +2,13 @@ div id="contentFlow" class="ContentFlow"
   .loadIndicator
     .indicator
   .flow
-    - @movies.reverse.each do |movie|
-      .item
-        img src="#{movie.poster_image_url}" class="content" href="/movies/#{movie.id}" 
-        .caption
-          =movie.title 
+    - @movies.each_with_index do |movie,index|
+      -if index > (@movies.count - 10)
+        .item
+          img src="#{movie.poster_image_url}" class="content" href="/movies/#{movie.id}" 
+          .caption
+            =movie.title 
   .globalCaption
 javascript:
- var myNewFlow = new ContentFlow('contentFlow', { reflectionHeight: 0.3, circularFlow: true, maxItemHeight: 450, startItem: 0 } ) ;
+ var myNewFlow = new ContentFlow('contentFlow', { reflectionHeight: 0.1, circularFlow: true, maxItemHeight: 450, startItem: 'last' } ) ;
  

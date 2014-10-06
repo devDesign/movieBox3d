@@ -1,57 +1,77 @@
-= link_to "Back to all movies", movies_path 
-br
-= link_to image_tag(@movie.poster_image_url), movie_path(@movie)
-h2
-  = @movie.title
-small
-  |( 
-  = link_to "edit", edit_movie_path(@movie)
-  |  | 
-  = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
-  |)
-h3
-  = @movie.release_date
-h4
-  | Dir. 
-  = @movie.director
-  || 
-  = @movie.runtime_in_minutes
-  | minutes
-p
-  = @movie.description
-br
-table
-  - @actors.each_with_index do |actor,index|
-    - if index < 10
-      tr
-        td
-           = actor.full_name 
-        td
-          = actor.role
-        td
-          img src="#{actor.picture}"
+.title
+  #container
 
+.poster
+    = link_to image_tag(@movie.poster_image_url), movie_path(@movie)
+    h1
+      = @movie.title
+  
+.movie
+  .actors
+    - @actors.each_with_index do |actor,index|
+      - if index < 11 && actor.picture != nil
+        .actor
+          table
+            tr
+              td
+                img src="#{actor.picture}" 
+            tr
+              td
+                =actor.full_name
+                br
+                =actor.role 
+  = link_to "Back to all movies", movies_path 
+  br
+
+
+  small
+    |( 
+    = link_to "edit", edit_movie_path(@movie)
+    |  | 
+    = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
+    |)
+  h3
+    = @movie.release_date
+  h4
+    | Dir. 
+    = @movie.director
+    || 
+    = @movie.runtime_in_minutes
+    | minutes
+  p
+    = @movie.description
+  br
+
+
+ 
     
       
-hr
-  h3
-    |Reviews of
-    em
-      =@movie.title
-  -if current_user
-    -@movie.reviews.each do |review|
+  hr
+    h3
+      |Reviews of
+      em
+        =@movie.title
+    -if current_user
+      -@movie.reviews.each do |review|
+        p
+          = review.text
+        p
+          = review.rating_out_of_ten
+          | /10
+        small
+          | -
+          = review.user.full_name
+        br
+      = link_to "Write a review!", new_movie_review_path(@movie)
+    -else
       p
-        = review.text
-      p
-        = review.rating_out_of_ten
-        | /10
-      small
-        | -
-        = review.user.full_name
-      br
-    = link_to "Write a review!", new_movie_review_path(@movie)
-  -else
-    p
-      | please 
-      = link_to "log in", new_session_path
-      |  to see revies and add your own 
+        | please 
+        = link_to "log in", new_session_path
+        |  to see revies and add your own 
+
+
+script src="/javascript/three.min.js"
+script src="/javascript/OrbitControls.js"
+script src='/javascript/font-example.js'
+javascript:
+ var myNewFlow = new ContentFlow('contentFlow', { verticalFlow: true,reflectionHeight: 0.1, circularFlow: true, startItem: 'first' } ) ;

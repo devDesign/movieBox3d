@@ -1,19 +1,95 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  color: #dddddd;
+  h1{
+    background-color: #222222;
+  }
+}
+.actors{
+  width: 45%;
+  float: left;
+}
+.actor{
+  float: left;
+  height: 350px;
+}
 .addmovie{
+  color:#dddddd;
   position: fixed;
   bottom:1%;
   left:1%;
 }
 .search{
+  color:#cccccc;
   position: fixed;
   top:1%;
   left:1%;
+  z-index: 100;
+  text-align: right;
 }
 .title{
   position: fixed;
   right:1%;
+}
+
+.foreground{
+  position: fixed;
+  top:460px;
+  height: 1000px;
+  background-color: #202020;
+  width: 110vw;
+}
+#cast_flow{
+  position: absolute;
+  width: 150px;
+  height: 500px;
+  left:1px;
+  text-align: left;
+  top:-100px;
+
+}
   
+
+.movie{
+  position: absolute;
+  z-index: 100;
+  top:521px;
+  background-color: #222222;
+  
+}
+.poster{
+  position: absolute;
+  width: 100%;
+  top:1%;
+  text-align: center;
+}
+
+#container{
+  position: fixed;
+  height: 471px;
+  width: 100vw;
+  padding: 0px;
+  right:1%;
+  top:-50px;
+  right:0px;
+  margin: 0px;
+  z-index: -99;
+
+}
+#container_cast{
+  position: fixed;
+  height: 600px;
+  width: 100vw;
+  padding: 0px;
+  right:1%;
+  top:-50px;
+  right:0px;
+  margin: 0px;
+  z-index: -99;
 
 }

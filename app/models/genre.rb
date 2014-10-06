@@ -1,3 +1,5 @@
 class Genre < ActiveRecord::Base
-  has_many :movies
+  belongs_to :movie
+  scope :sci_fi, -> { where(genre: 'Science Fiction') }
+ 
 end
