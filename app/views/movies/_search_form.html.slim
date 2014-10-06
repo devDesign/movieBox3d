@@ -5,4 +5,81 @@
     br
     = label_tag(:search_runtime, "Search by runtime")
     = select_tag(:search_runtime,options_for_select([ "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes" ]),prompt: "Select something")
+    br
+    = check_box_tag(:search_action,"action")
+    = label_tag(:search_action,"action")
+    
+    br
+    = check_box_tag(:search_adventure,"adventure")
+    = label_tag(:search_adventue,"adventure")
+    
+    br
+    = check_box_tag(:search_animation,"animation")
+    = label_tag(:search_animation,"animation")
+    
+    br
+    = check_box_tag(:search_comedy,"Comedy")
+    = label_tag(:search_comedy,"Comedy")
+    
+    br
+    = check_box_tag(:search_crime,"crime")
+    = label_tag(:search_crime,"crime")
+    
+    br
+    = check_box_tag(:search_documentary,"documentary")
+    = label_tag(:search_documentary,"documentary")
+    
+    br
+    = check_box_tag(:search_drama,"drama")
+    = label_tag(:search_drama,"drama")
+    
+    br
+    = check_box_tag(:search_family,"family")
+    = label_tag(:search_family,"family")
+    
+    br
+    = check_box_tag(:search_fantasy,"fantasy")
+    = label_tag(:search_fantasy,"fantasy")
+    
+    br
+    = check_box_tag(:search_foreign,"foreign")
+    = label_tag(:search_foreign,"foreign")
+    
+    br
+    = check_box_tag(:search_history,"history")
+    = label_tag(:search_history,"history")
+    
+    br
+    = check_box_tag(:search_horror,"horror")
+    = label_tag(:search_horror,"horror")
+    
+    br
+    = check_box_tag(:search_music,"music")
+    = label_tag(:search_music,"music")
+    
+    br
+    = check_box_tag(:search_mystery,"mystery")
+    = label_tag(:search_mystery,"mystery")
+    
+    br
+    = check_box_tag(:search_romance,"romance")
+    = label_tag(:search_romance,"romance")
+    
+    br
+    = check_box_tag(:search_sci_fi,"sci_fi")
+    = label_tag(:search_sci_fi,"sci_fi")
+    
+    br
+    = check_box_tag(:search_thriller,"thriller")
+    = label_tag(:search_thriller,"thriller")
+    
+    br
+    = check_box_tag(:search_war,"war")
+    = label_tag(:search_war,"war")
+    
+    br
+    = check_box_tag(:search_western,"western")
+    = label_tag(:search_western,"western")
+    
+    br
     = submit_tag "Search", :name => nil

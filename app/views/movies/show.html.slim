@@ -9,7 +9,7 @@
 .movie 
   .actors
     - @actors.each_with_index do |actor,index|
-      - if index < 15 && actor.picture != nil
+      - if index < 15 && actor.picture != "https://image.tmdb.org/t/p/w185/"
         -if index == 3
           .trailer style="background-image: url(#{@movie.backdrop_image_url};)"
         .actor
