@@ -9,11 +9,9 @@
 .movie 
   .actors
     - @actors.each_with_index do |actor,index|
-      - if index < 11 && actor.picture != nil
+      - if index < 15 && actor.picture != nil
         -if index == 3
           .trailer style="background-image: url(#{@movie.backdrop_image_url};)"
-            .iframe_hider
-              iframe id="ytplayer" type="text/html" width="555" height="312" src="http://www.youtube.com/embed/#{@movie.trailer}?autoplay=0" frameborder="0"
         .actor
           table
             tr
@@ -24,6 +22,7 @@
                   br
                   | ~ 
                   = actor.role 
+.movie_info
   h3
     = @movie.release_date
   h4
@@ -35,12 +34,9 @@
   p
     = @movie.description
   br
-
-
-
- 
-    
-      
+  -unless @movie.trailer == nil
+    .iframe_hider
+      iframe id="ytplayer" type="text/html" width="555" height="312" src="http://www.youtube.com/embed/#{@movie.trailer}?autoplay=0" frameborder="0"    
   hr
     h3
       |Reviews of
@@ -65,8 +61,6 @@
         |  to see revies and add your own 
     = link_to "Back to all movies", movies_path 
   br
-
-
   small
     |( 
     = link_to "edit", edit_movie_path(@movie)
@@ -74,12 +68,7 @@
     = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
     |)
 .footer_space
-  
-
-
-
 script src="/javascript/three.min.js"
 script src="/javascript/OrbitControls.js"
 script src='/javascript/font-example.js'
-javascript:
- var myNewFlow = new ContentFlow('contentFlow', { verticalFlow: true,reflectionHeight: 0.1, circularFlow: true, startItem: 'first' } ) ;
+
