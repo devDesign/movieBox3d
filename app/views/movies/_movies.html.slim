@@ -3,12 +3,11 @@ div id="contentFlow" class="ContentFlow"
     .indicator
   .flow
     - @movies.each_with_index do |movie,index|
-      -if index > (@movies.count - 10)
+      -if index > (@movies.count - 50)
         .item
           img src="#{movie.poster_image_url}" class="content" href="/movies/#{movie.id}" 
           .caption
             =movie.title 
   .globalCaption
 javascript:
- var myNewFlow = new ContentFlow('contentFlow', { reflectionHeight: 0.1, circularFlow: true, maxItemHeight: 450, startItem: 'last' } ) ;
- 
+  var myNewFlow = new ContentFlow('contentFlow', { reflectionHeight: 0.1, circularFlow: true, maxItemHeight: 450, startItem: 'last' } ) ;

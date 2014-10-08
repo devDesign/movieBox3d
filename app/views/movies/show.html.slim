@@ -1,11 +1,13 @@
-.title
-  #container
 
+#container
+.title
+  h1
+    = @movie.title
 .poster
-    = link_to image_tag(@movie.poster_image_url), movie_path(@movie)
-    h1
-      = @movie.title
-  
+  = link_to image_tag(@movie.poster_image_url), movie_path(@movie)
+
+
+
 .movie 
   .actors
     - @actors.each_with_index do |actor,index|
@@ -25,18 +27,37 @@
 .movie_info
   h3
     = @movie.release_date
+  h2
+    = @movie.tag_line
   h4
     | Dir. 
     = @movie.director
-    || 
+    br
     = @movie.runtime_in_minutes
     | minutes
   p
     = @movie.description
+  p
+    -unless @movie.budget == 0
+      | Budget: $ 
+      = @movie.budget
   br
   -unless @movie.trailer == nil
     .iframe_hider
       iframe id="ytplayer" type="text/html" width="555" height="312" src="http://www.youtube.com/embed/#{@movie.trailer}?autoplay=0" frameborder="0"    
+  p
+    | cast
+    br
+    table
+      - @actors.each do |cast_member|
+        tr
+          td
+            =cast_member.full_name
+  #theatre
+    #free
+  #showtimes-link
+    button 
+      | showtimes for today
   hr
     h3
       |Reviews of
@@ -68,6 +89,8 @@
     = link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" 
     |)
 .footer_space
+script src="/javascript/moment.js"
+script src="/javascript/movies.js"
 script src="/javascript/three.min.js"
 script src="/javascript/OrbitControls.js"
 script src='/javascript/font-example.js'

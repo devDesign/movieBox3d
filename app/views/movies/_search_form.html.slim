@@ -1,85 +1,93 @@
+/ SELECT * FROM movies WHERE id IN (SELECT DISTINCT movie_id FROM genres WHERE genre = "Action")
+/ AND id IN (SELECT DISTINCT movie_id FROM genres WHERE genre = "Adventure");
+
 .search
   = form_tag("/", method: "get") do 
-    = label_tag(:search, "Search by title or director:") 
     = text_field_tag(:search) 
+    = label_tag(:search, "Search by title or director:") 
+    br
+    = text_field_tag(:search_actor)
+    = label_tag(:search_actor, "Search by actor:") 
+     
     br
     = label_tag(:search_runtime, "Search by runtime")
     = select_tag(:search_runtime,options_for_select([ "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes" ]),prompt: "Select something")
     br
-    = check_box_tag(:search_action,"action")
-    = label_tag(:search_action,"action")
+    = check_box_tag(:search_action,"Action")
+    = label_tag(:search_action,"Action")
     
     br
-    = check_box_tag(:search_adventure,"adventure")
-    = label_tag(:search_adventue,"adventure")
+    = check_box_tag(:search_adventure,"Adventure")
+    = label_tag(:search_adventure,"Adventure")
+
+    br
+    = check_box_tag(:search_genre,"Comedy")
+    = label_tag(:search_genre,"Comedy")
     
     br
-    = check_box_tag(:search_animation,"animation")
-    = label_tag(:search_animation,"animation")
+    = check_box_tag(:search_genre,"Crime")
+    = label_tag(:search_genre,"Crime")
     
     br
-    = check_box_tag(:search_comedy,"Comedy")
-    = label_tag(:search_comedy,"Comedy")
+    = check_box_tag(:search_genre,"Documentary")
+    = label_tag(:search_genre,"Documentary")
     
     br
-    = check_box_tag(:search_crime,"crime")
-    = label_tag(:search_crime,"crime")
+    = check_box_tag(:search_genre,"Drama")
+    = label_tag(:search_genre,"Drama")
     
     br
-    = check_box_tag(:search_documentary,"documentary")
-    = label_tag(:search_documentary,"documentary")
+    = check_box_tag(:search_genre,"Family")
+    = label_tag(:search_genre,"Family")
     
     br
-    = check_box_tag(:search_drama,"drama")
-    = label_tag(:search_drama,"drama")
+    = check_box_tag(:search_genre,"Fantasy")
+    = label_tag(:search_genre,"Fantasy")
     
     br
-    = check_box_tag(:search_family,"family")
-    = label_tag(:search_family,"family")
+    = check_box_tag(:search_genre,"Foreign")
+    = label_tag(:search_genre,"Foreign")
     
     br
-    = check_box_tag(:search_fantasy,"fantasy")
-    = label_tag(:search_fantasy,"fantasy")
+    = check_box_tag(:search_genre,"History")
+    = label_tag(:search_genre,"History")
     
     br
-    = check_box_tag(:search_foreign,"foreign")
-    = label_tag(:search_foreign,"foreign")
+    = check_box_tag(:search_genre,"Horror")
+    = label_tag(:search_genre,"Horror")
     
     br
-    = check_box_tag(:search_history,"history")
-    = label_tag(:search_history,"history")
+    = check_box_tag(:search_genre,"Music")
+    = label_tag(:search_genre,"Music")
     
     br
-    = check_box_tag(:search_horror,"horror")
-    = label_tag(:search_horror,"horror")
+    = check_box_tag(:search_genre,"Mystery")
+    = label_tag(:search_genres,"Mystery")
+
+    br
+    = check_box_tag(:search_romance,"Romance")
+    = label_tag(:search_romance,"Romance")
+
+    br
+    = check_box_tag(:search_genre,"Science Fiction")
+    = label_tag(:search_genre,"Science Fiction")
     
     br
-    = check_box_tag(:search_music,"music")
-    = label_tag(:search_music,"music")
+    = check_box_tag(:search_genre,"Thriller")
+    = label_tag(:search_genre,"Thriller")
+
+    br
+    = check_box_tag(:search_genre,"Animation")
+    = label_tag(:search_genre,"Animation")
+    
     
     br
-    = check_box_tag(:search_mystery,"mystery")
-    = label_tag(:search_mystery,"mystery")
+    = check_box_tag(:search_genre,"War")
+    = label_tag(:search_genre,"War")
     
     br
-    = check_box_tag(:search_romance,"romance")
-    = label_tag(:search_romance,"romance")
-    
-    br
-    = check_box_tag(:search_sci_fi,"sci_fi")
-    = label_tag(:search_sci_fi,"sci_fi")
-    
-    br
-    = check_box_tag(:search_thriller,"thriller")
-    = label_tag(:search_thriller,"thriller")
-    
-    br
-    = check_box_tag(:search_war,"war")
-    = label_tag(:search_war,"war")
-    
-    br
-    = check_box_tag(:search_western,"western")
-    = label_tag(:search_western,"western")
+    = check_box_tag(:search_genre,"Western")
+    = label_tag(:search_genre,"Western")
     
     br
     = submit_tag "Search", :name => nil

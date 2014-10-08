@@ -10,4 +10,16 @@
 br
 = render 'movies'
 br
+
+
 = render 'add_movie'
+.search-link
+  a
+    | show search
+br
+
+javascript:
+  $( ".search-link" ).on("click",function() {
+    $( ".search" ).fadeToggle( "slow", "linear" );
+    $('.addmovie').fadeToggle( "fast", "linear");
+  });

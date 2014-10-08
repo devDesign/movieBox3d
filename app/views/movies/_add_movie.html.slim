@@ -1,5 +1,6 @@
 .addmovie
   = form_tag(seed_aliens_path, method: :create) do 
     = label_tag(:add_movie, "Add movie:") 
-    = text_field_tag(:add_movie) 
+    = text_field_tag(:add_movie)
+    = number_field_tag(:number_of_results,"1", class: 'number_field')
     = submit_tag "ADD"

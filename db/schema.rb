@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006012419) do
+ActiveRecord::Schema.define(version: 20141006080816) do
 
   create_table "actors", force: true do |t|
     t.datetime "created_at"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20141006012419) do
     t.integer  "user_id"
     t.integer  "movies_id"
     t.string   "picture"
+    t.integer  "movie_id"
   end
 
+  add_index "actors", ["movie_id"], name: "index_actors_on_movie_id"
   add_index "actors", ["movies_id"], name: "index_actors_on_movies_id"
   add_index "actors", ["user_id"], name: "index_actors_on_user_id"
 

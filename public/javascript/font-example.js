@@ -24,7 +24,7 @@ var container;
 
                 geometry = new THREE.Geometry();
 
-                for ( i = 0; i < 25; i ++ ) {
+                for ( i = 0; i < 20; i ++ ) {
 
                     var vertex = new THREE.Vector3();
                     vertex.x = Math.random() * 2000 - 1000;
@@ -48,7 +48,7 @@ var container;
                     color = parameters[i][0];
                     size  = parameters[i][1];
 
-                    materials[i] = new THREE.PointCloudMaterial( { size: Math.random()*100+30 } );
+                    materials[i] = new THREE.PointCloudMaterial( { size: Math.random()*100+10 } );
 
                     particles = new THREE.PointCloud( geometry, materials[i] );
 

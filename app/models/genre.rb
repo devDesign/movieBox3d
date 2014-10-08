@@ -1,6 +1,8 @@
 class Genre < ActiveRecord::Base
   belongs_to :movie
-  scope :sci_fi, -> { where(genre: 'Science Fiction') }
+  scope :genre, -> (name) { where(genre: name) }
+
+
   scope :action, -> { where(genre: 'Action') }
   scope :comedy, -> { where(genre: 'Comedy') }
   scope :animation, -> { where(genre: 'Animation') }
@@ -19,4 +21,6 @@ class Genre < ActiveRecord::Base
   scope :mystery, -> { where(genre: 'Mystery') }
   scope :thriller, -> { where(genre: 'Thriller') }
   scope :western, -> { where(genre: 'Western') }
+
+
 end

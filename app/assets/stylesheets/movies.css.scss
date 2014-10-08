@@ -25,14 +25,16 @@ body{
   font-family: helvetica;
   background-color: rgba(0,0,0,0.9);
   background-position: 10px 10px;
-  font-size: 0.9em;
-   
+  font-size: 0.9em;  
 }
 .iframe_hider{
   iframe{
     display: block;
-    
   }
+}
+.addmovie{
+  right:1%;
+
 }
 
 .trailer{
@@ -47,21 +49,22 @@ body{
   z-index: 99999;
 
 }
-.trailer:hover ~iframe{
-    opacity: 100%;
-    display: block;
-}
 .actor{
   float: left;
   height: 278px;
 }
 .addmovie{
+  display: none;
   color:#dddddd;
   position: fixed;
   bottom:1%;
-  left:1%;
+  right:10%;
+  .number_field{
+    width: 30px;
+  }
 }
 .search{
+  display: none;
   color:#cccccc;
   position: fixed;
   top:1%;
@@ -70,10 +73,14 @@ body{
   text-align: left;
 }
 .title{
-  position: fixed;
-  right:1%;
-}
+  position: relative;
+  top: 0px;
+  h1{
+    padding-left: 200px;
+  }
 
+
+}
 .foreground{
   position: fixed;
   top:460px;
@@ -90,30 +97,33 @@ body{
   top:-100px;
 
 }
-  
-
 .movie{
   position: absolute;
   z-index: 100;
-  top:521px;
-
-  
+  top:90px; 
 }
 .movie_info{
   position: absolute;
-  top:521px;
+  top:400px;
   left: 580px;
-  width: 555px;
+  min-width: 200px;
+  max-width: 555px;
   font-family: helvetica;
   background-color: rgba(0,0,0,0.95);
 }
 .poster{
   position: absolute;
-  width: 100%;
+  width: 200px;
   top:1%;
+  left:800px;
   text-align: center;
 }
-
+#showtimes-link{
+  position: relative;
+  width: 150px;
+  height: 70px;
+  border-color: rgba(255,255,255,0.33)
+}
 #container{
   position: fixed;
   height: 471px;
@@ -129,12 +139,24 @@ body{
 #container_cast{
   position: fixed;
   height: 600px;
-  width: 100vw;
+  width: 40vw;
   padding: 0px;
   right:1%;
   top:-50px;
   right:0px;
   margin: 0px;
   z-index: -99;
+
+}
+.search-link{
+  position: absolute;
+  bottom: 38px;
+  width: 100px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 5px;
+  padding: 10px;  
+  z-index: 999999;
+  right:1%;
 
 }
